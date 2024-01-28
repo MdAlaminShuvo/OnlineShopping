@@ -21,7 +21,7 @@ class CountryMiddleware
             'Pakistan',
             'Nepal',
          ];
-         if(in_array($request->country, $array)){
+         if( in_array($request->country, $array)){
             return $next($request);
          }
         return redirect()->to('/');

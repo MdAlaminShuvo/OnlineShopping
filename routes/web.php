@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Example\FirstController;
+use App\Http\Controllers\LearnController;
+use App\Http\Controllers\Example\SecondController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,26 +22,35 @@ Route::get('/', function () {
 });
 
 
-Route::get('/about', function (){
-    return view('about');
-})->name('about.us');
+// Route::get('/about', function (){
+//     return view('about');
+// })->name('about.us');
 
-Route::get('/contact', function (){
-    return view('contact');
-})->name('contact.us');
+// Route::get('/contact', function (){
+//     return view('contact');
+// })->name('contact.us');
+// Route::get('contact/{roll}', function($roll){
+//     return "My roll is $roll";
+// });
 
-Route::get('contact/{roll}', function($roll){
-    return "My roll is $roll";
-});
-
-Route::get('/country', function () {
-    //dd(app());
-    return view('country');
-})->middleware('country');
-
+// Route::get('/country', function () {
+//     //dd(app());
+//     return view('country');
+// })->middleware('country');
 
 
+Route::get('/contact',[FirstController::class, 'index'])->name('contact.us');
+Route::get('/about',[FirstController::class, 'about_index'])->name('about.us');
+Route::get('/laravel',[FirstController::class, 'laravel'])->name('laravel');
+Route::get('/country',[FirstController::class, 'country'])->name('country')->middleware('country');
 
+Route::post('/student/store',[FirstController::class, 'StudentStore'])->name('student.store');
+Route::post('/about/store',[FirstController::class, 'aboutStore'])->name('about.store');
+Route::get('/test',[SecondController::class, 'test'])->name('test');
+// invoke method
+
+Route::get('/learn', LearnController::class)->name('learn');
+Route::get('/hello', LearnController::class, 'hello')->name('hello');
 
 
 

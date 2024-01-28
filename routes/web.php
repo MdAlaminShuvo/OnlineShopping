@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    //dd(app());
     return view('welcome');
 });
 
@@ -30,6 +31,12 @@ Route::get('/contact', function (){
 Route::get('contact/{roll}', function($roll){
     return "My roll is $roll";
 });
+
+Route::get('/country', function () {
+    //dd(app());
+    return view('country');
+})->middleware('country');
+
 
 
 

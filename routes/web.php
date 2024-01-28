@@ -18,6 +18,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/about', function (){
+    return view('about');
+})->name('about.us');
+
+Route::get('/contact', function (){
+    return view('contact');
+})->name('contact.us');
+
+Route::get('contact/{roll}', function($roll){
+    return "My roll is $roll";
+});
+
+
+
+
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
